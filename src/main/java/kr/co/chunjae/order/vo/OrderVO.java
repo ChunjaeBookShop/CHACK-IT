@@ -22,7 +22,9 @@ public class OrderVO {
 	private int orderGoodsQty; //최종 주문  제품 수
 	private String ordererName;
 	private String receiverName;
-	private String receiverHp;
+	private String receiverHp1;
+	private String receiverHp2;
+	private String receiverHp3;
 	private String deliveryAddress;
 	private String deliveryMessage;
 	private String deliveryMethod;

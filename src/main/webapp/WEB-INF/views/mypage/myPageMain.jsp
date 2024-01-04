@@ -63,12 +63,12 @@ function fn_cancel_order(order_id){
         <c:otherwise>
 	      <c:forEach var="item" items="${myOrderList }"  varStatus="i">
 	       <c:choose> 
-              <c:when test="${ pre_order_id != item.order_id}">
+              <c:when test="${ pre_order_id != item.orderId}">
                 <c:choose>
-	              <c:when test="${item.delivery_state=='delivery_prepared' }">
+	              <c:when test="${item.deliveryState=='delivery_prepared' }">
 	                <tr  bgcolor="lightgreen">    
 	              </c:when>
-	              <c:when test="${item.delivery_state=='finished_delivering' }">
+	              <c:when test="${item.deliveryState=='finished_delivering' }">
 	                <tr  bgcolor="lightgray">    
 	              </c:when>
 	              <c:otherwise>
@@ -77,48 +77,48 @@ function fn_cancel_order(order_id){
 	            </c:choose> 
             <tr>
              <td>
-		       <a href="${contextPath}/mypage/myOrderDetail.do?order_id=${item.order_id }"><span>${item.order_id }</span>  </a>
+		       <a href="${contextPath}/mypage/myOrderDetail.do?order_id=${item.orderId }"><span>${item.orderId }</span>  </a>
 		     </td>
-		    <td><span>${item.pay_order_time }</span></td>
+		    <td><span>${item.payOrderTime }</span></td>
 			<td align="left">
 			   <strong>
 			      <c:forEach var="item2" items="${myOrderList}" varStatus="j">
-			          <c:if  test="${item.order_id ==item2.order_id}" >
-			            <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }/${item.order_goods_qty }개</a><br>
+			          <c:if  test="${item.orderId ==item2.orderId}" >
+			            <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goodsId }">${item2.goodsTitle }/${item.orderGoodsQty }개</a><br>
 			         </c:if>   
 				 </c:forEach>
 				</strong></td>
 			<td>
 			  <c:choose>
-			    <c:when test="${item.delivery_state=='delivery_prepared' }">
+			    <c:when test="${item.deliveryState=='delivery_prepared' }">
 			       배송준비중
 			    </c:when>
-			    <c:when test="${item.delivery_state=='delivering' }">
+			    <c:when test="${item.deliveryState=='delivering' }">
 			       배송중
 			    </c:when>
-			    <c:when test="${item.delivery_state=='finished_delivering' }">
+			    <c:when test="${item.deliveryState=='finished_delivering' }">
 			       배송완료
 			    </c:when>
-			    <c:when test="${item.delivery_state=='cancel_order' }">
+			    <c:when test="${item.deliveryState=='cancel_order' }">
 			       주문취소
 			    </c:when>
-			    <c:when test="${item.delivery_state=='returning_goods' }">
+			    <c:when test="${item.deliveryState=='returning_goods' }">
 			       반품완료
 			    </c:when>
 			  </c:choose>
 			</td>
 			<td>
 			  <c:choose>
-			   <c:when test="${item.delivery_state=='delivery_prepared'}">
-			       <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소"  />
+			   <c:when test="${item.deliveryState=='delivery_prepared'}">
+			       <input  type="button" onClick="fn_cancel_order('${item.orderId}')" value="주문취소"  />
 			   </c:when>
 			   <c:otherwise>
-			      <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소" disabled />
+			      <input  type="button" onClick="fn_cancel_order('${item.orderId}')" value="주문취소" disabled />
 			   </c:otherwise>
 			  </c:choose>
 			</td>
 			</tr>
-          <c:set  var="pre_order_id" value="${item.order_id}" />
+          <c:set  var="pre_order_id" value="${item.orderId}" />
            </c:when>
       </c:choose>
 	   </c:forEach>
@@ -168,7 +168,7 @@ function fn_cancel_order(order_id){
 	   이메일:
    </td>
     <td>
-	   <strong>${memberInfo.email1 }@${memberInfo.email2 }</strong>
+	   <strong>${memberInfo.memberEmail1 }@${memberInfo.memberEmail2 }</strong>
    </td>
    </tr>
    <tr>
@@ -176,7 +176,7 @@ function fn_cancel_order(order_id){
 	   전화번호 
    </td>
     <td>
-	   <strong>${memberInfo.hp1 }-${memberInfo.hp2}-${memberInfo.hp3 }</strong>
+	   <strong>${memberInfo.memberHp1 }-${memberInfo.memberHp2}-${memberInfo.memberHp3 }</strong>
    </td>
    </tr>
    <tr>

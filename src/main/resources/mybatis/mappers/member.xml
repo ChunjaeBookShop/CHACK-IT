@@ -38,65 +38,29 @@
 	<select id="login" resultType="memberVO"  parameterType="java.util.Map"  >
 	    <![CDATA[
 			select * from t_shopping_member 
-			 where member_id=#{member_id}
-			 and member_pw=#{member_pw}
+			 where member_id=#{memberId}
+			 and member_pw=#{memberPw}
 			 
 		]]>
 	</select>
 	
 	<select id="selectOverlappedID" parameterType="String" resultType="String">
-	   select decode(count(*),1, 'true', 0, 'false')
+	   select case
+	       when count(*) = 1 then 'true'
+			else 'false'
+	   		end
+
 	   from t_shopping_member
-	   where member_id = #{id}
+	   where member_id = #{memberId}
 	</select>
 	
   <insert id="insertNewMember"  parameterType="memberVO">
   <![CDATA[
-    	insert into t_shopping_member(member_id,
-				 					                  member_pw,
-                                     member_name,
-                                     member_gender,
-                                     member_birth_y,
-                                     member_birth_m,
-                                     member_birth_d,
-                                     member_birth_gn,
-                                     tel1,
-                                     tel2,
-                                     tel3,
-                                     hp1,
-                                     hp2,
-                                     hp3,
-                                     smssts_yn,
-                                     email1,
-                                     email2,
-                                     emailsts_yn,
-                                     zipcode,
-                                     roadAddress,
-                                     jibunAddress,
-                                     namujiAddress)
-							 values(#{member_id},
-									#{member_pw},
-									#{member_name},
-                                 	#{member_gender},
-                                   	#{member_birth_y},
-                                   	#{member_birth_m},
-                                    #{member_birth_d},
-                                    #{member_birth_gn},
-                                    #{tel1},
-                                    #{tel2},
-                                    #{tel3},
-                                    #{hp1},
-                                    #{hp2},
-                                    #{hp3},
-                                    #{smssts_yn},
-                                    #{email1},
-                                    #{email2},
-                                    #{emailsts_yn},
-                                    #{zipcode},
-                                    #{roadAddress},
-                                    #{jibunAddress},
-                                    #{namujiAddress})
-                                  
+    	insert into t_shopping_member(member_id, member_pw, member_name, member_gender, member_birth_y, member_birth_m, member_birth_d, member_birth_gn,
+member_hp1, member_hp2, member_hp3, smssts_yn, member_email1, member_email2, emailsts_yn, zipcode, road_address, jibun_address, namuji_address)
+	 values(#{memberId}, #{memberPw}, #{memberName}, #{memberGender}, #{memberBirthY}, #{memberBirthM}, #{memberBirthD}, #{memberBirthGn}, #{memberHp1},
+#{memberHp2}, #{memberHp3}, #{smsstsYn}, #{memberEmail1}, #{memberEmail2}, #{emailstsYn}, #{zipcode}, #{roadAddress}, #{jibunAddress}, #{namujiAddress})
+
                                       
    ]]>      
   </insert>

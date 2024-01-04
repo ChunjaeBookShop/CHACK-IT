@@ -104,30 +104,30 @@ function fn_overlapped(){
 					<td class="fixed_join">아이디</td>
 					<td>
 					  <input type="text" name="_member_id"  id="_member_id"  size="20" />
-					  <input type="hidden" name="member_id"  id="member_id" />
+					  <input type="hidden" name="memberId"  id="member_id" />
 					  
 					  <input type="button"  id="btnOverlapped" value="중복체크" onClick="fn_overlapped()" />
 					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">비밀번호</td>
-					<td><input name="member_pw" type="password" size="20" /></td>
+					<td><input name="memberPw" type="password" size="20" /></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">이름</td>
-					<td><input name="member_name" type="text" size="20" /></td>
+					<td><input name="memberName" type="text" size="20" /></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">성별</td>
-					<td><input type="radio" name="member_gender" value="102" />
+					<td><input type="radio" name="memberGender" value="102" />
 						여성<span style="padding-left:120px"></span>
-						 <input type="radio" name="member_gender" value="101" checked />남성
+						 <input type="radio" name="memberGender" value="101" checked />남성
 					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">법정생년월일</td>
 					<td>
-					<select name="member_birth_y">
+					<select name="memberBirthY">
 					 
 					     <c:forEach var="year" begin="1" end="100">
 					       <c:choose>
@@ -141,7 +141,7 @@ function fn_overlapped(){
 					   	</c:forEach> 
 							
 					</select>년 
-					 <select name="member_birth_m" >
+					 <select name="memberBirthM" >
 					   <c:forEach var="month" begin="1" end="12">
 					       <c:choose>
 					         <c:when test="${month==5 }">
@@ -153,7 +153,7 @@ function fn_overlapped(){
 							</c:choose>
 					   	</c:forEach>
 					</select>월  
-					<select name="member_birth_d">
+					<select name="memberBirthD">
 							<c:forEach var="day" begin="1" end="31">
 					       <c:choose>
 					         <c:when test="${day==10 }">
@@ -165,45 +165,14 @@ function fn_overlapped(){
 							</c:choose>
 					   	</c:forEach>
 					</select>일 <span style="padding-left:50px"></span>
-					  <input type="radio" name="member_birth_gn" value="2" checked />양력
+					  <input type="radio" name="memberBirthGn" value="2" checked />양력
 						 <span style="padding-left:50px"></span>
-						<input type="radio"  name="member_birth_gn" value="1" />음력
+						<input type="radio"  name="memberBirthGn" value="1" />음력
 				  </td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">전화번호</td>
-					<td><select  name="tel1">
-							<option>없음</option>
-							<option value="02">02</option>
-							<option value="031">031</option>
-							<option value="032">032</option>
-							<option value="033">033</option>
-							<option value="041">041</option>
-							<option value="042">042</option>
-							<option value="043">043</option>
-							<option value="044">044</option>
-							<option value="051">051</option>
-							<option value="052">052</option>
-							<option value="053">053</option>
-							<option value="054">054</option>
-							<option value="055">055</option>
-							<option value="061">061</option>
-							<option value="062">062</option>
-							<option value="063">063</option>
-							<option value="064">064</option>
-							<option value="0502">0502</option>
-							<option value="0503">0503</option>
-							<option value="0505">0505</option>
-							<option value="0506">0506</option>
-							<option value="0507">0507</option>
-							<option value="0508">0508</option>
-							<option value="070">070</option>
-					   </select> - <input  size="10px" type="text" name="tel2"> - <input size="10px"  type="text" name="tel3">
-					</td>
-				</tr>
-				<tr class="dot_line">
 					<td class="fixed_join">휴대폰번호</td>
-					<td><select  name="hp1">
+					<td><select  name="memberHp1">
 							<option>없음</option>
 							<option selected value="010">010</option>
 							<option value="011">011</option>
@@ -211,13 +180,13 @@ function fn_overlapped(){
 							<option value="017">017</option>
 							<option value="018">018</option>
 							<option value="019">019</option>
-					</select> - <input size="10px"  type="text" name="hp2"> - <input size="10px"  type="text"name="hp3"><br> <br> 
-					<input type="checkbox"	name="smssts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</td>
+					</select> - <input size="10px"  type="text" name="memberHp2"> - <input size="10px"  type="text"name="memberHp3"><br> <br>
+					<input type="checkbox"	name="smsstsYn" value="Y" checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">이메일<br>(e-mail)</td>
-					<td><input size="10px"   type="text" name="email1" /> @ <input  size="10px"  type="text"name="email2" /> 
-						  <select name="email2" onChange=""	title="직접입력">
+					<td><input size="10px"   type="text" name="memberEmail1" /> @ <input  size="10px"  type="text"name="memberEmail2" />
+						  <select name="memberEmail2" onChange=""	title="직접입력">
 									<option value="non">직접입력</option>
 									<option value="hanmail.net">hanmail.net</option>
 									<option value="naver.com">naver.com</option>
@@ -230,7 +199,7 @@ function fn_overlapped(){
 									<option value="empal.com">empal.com</option>
 									<option value="korea.com">korea.com</option>
 									<option value="freechal.com">freechal.com</option>
-							</select><br> <br> <input type="checkbox" name="emailsts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td>
+							</select><br> <br> <input type="checkbox" name="emailstsYn" value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">주소</td>

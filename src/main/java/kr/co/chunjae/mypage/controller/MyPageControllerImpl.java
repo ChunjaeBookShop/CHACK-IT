@@ -84,7 +84,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		endDate=tempDate[1];
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
-		dateMap.put("member_id", member_id);
+		dateMap.put("memberId", member_id);
 		List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
 		
 		String beginDate1[]=beginDate.split("-"); //검색일자를 년,월,일로 분리해서 화면에 전달합니다.
@@ -134,11 +134,6 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 			memberMap.put("member_birth_m",val[1]);
 			memberMap.put("member_birth_d",val[2]);
 			memberMap.put("member_birth_gn",val[3]);
-		}else if(attribute.equals("tel")){
-			val=value.split(",");
-			memberMap.put("tel1",val[0]);
-			memberMap.put("tel2",val[1]);
-			memberMap.put("tel3",val[2]);
 		}else if(attribute.equals("hp")){
 			val=value.split(",");
 			memberMap.put("hp1",val[0]);
